@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>Physics 8 Textbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Сол жақ меню */
+    .menu {
+      width: 20%;
+      background: #fff;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-y: auto;
+		
+		
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+		
+    }
+
+    .menu li {
+		border-radius:8px;
+      padding: 8px;
+      cursor: pointer;
+      background: #F5F7F8;
+      margin-bottom: 3px;
+      word-wrap: break-word;
+      white-space: normal;
+		
+    }
+
+    .submenu li {
+      background: #e6ebee;
+    }
+
+    .menu li:hover {
+      background: #1B56FD;
+		color: white;
+    }
+
+    /* Подменю */
+    .submenu {
+      display: none;
+      margin-left: 15px;
+    }
+
+    /* Таңдалған submenu элементі */
+    .submenu li.active {
+      background: #c8d3d9 !important;
+		
+    }
+
+    /* Таңдалған бөлім */
+    .menu li.section.active {
+      background: #1B56FD !important;
+      font-weight: bold;
+		color: white;
+    }
+
+    /* Контент аймағы */
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+
+    .content-text {
+      padding: 8px 10px;
+      font-weight: regular;
+    }
+
+    .content iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+
+    /* Логотип стилі */
+    .logo {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+    .logo img {
+      max-width: 150px;
+      height: auto;
+    }
+
+    /* Видео контейнер */
+    #videoContainer {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: top;
+    }
+    #videoContainer video {
+      border: 3px solid #e6ebee;
+      border-radius: 8px;
+      padding: 10px;
+      max-width: 100%;
+      max-height: 100%;
+      height: auto;
+    }
+
+    /* 🔹 Мобильді версия */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        height: 100vh;
+      }
+      .menu {
+        width: 100%;
+    height: auto;       /* Барлығы ашылады */
+    max-height: 40%;   /* Шектеуді алып тастау */
+	overflow-y: auto;
+		  border-bottom: 1px solid #e6ebee;
+      }
+      .content {
+        width: 100%;
+        flex: 2;
+		  overflow-y: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Сол жақ меню -->
+  <div class="menu">
+    <!-- Логотип -->
+    <div class="logo">
+      <img src="https://www.astanakitap.kz/wp-content/uploads/2023/08/Astanakitap-logo.svg" alt="Логотип">
+    </div>
+        <ul>
+
+<li class="section" onclick="toggleSubmenu(this, 'submenu1')">Chapter 1. Heat phenomena</li>
+      <ul id="submenu1" class="submenu">
+        <li onclick="openVideo(this, 'assets/en-video/CH1_diffusion.m4v')">Video: Diffusion</li>
+      <li onclick="openInFrame(this, 'assets/phet/CH1_diffusion_en.html')">
+      Simulation: Diffusion</li>
+      </ul>
+
+<li class="section" onclick="toggleSubmenu(this, 'submenu2')">Chapter 2.  States of matter</li>
+      <ul id="submenu2" class="submenu">
+          <li onclick="openInFrame(this, 'assets/phet/CH2_states-of-matter-basics_en.html')">Simulation: States of matter   </li>
+      </ul>
+
+<li class="section" onclick="toggleSubmenu(this, 'submenu2')">Chapter 3.  Thermodynamics</li>
+      <ul id="submenu2" class="submenu">
+        <li onclick="openVideo(this, 'assets/en-video/CH2_4 Stroke Engine Animation.mp4')">Video: Engine</li>    
+      </ul>
+<li class="section" onclick="toggleSubmenu(this, 'submenu4')">Chapter 4. Electrostatics
+</li>
+      <ul id="submenu4" class="submenu">
+    <li onclick="openInFrame(this, 'assets/phet/CH4_john-travoltage_en.html')">
+      Simulation: John Travoltage
+    </li>
+    <li onclick="openInFrame(this, 'assets/phet/CH4_balloons-and-static-electricity_en.html')">
+      Simulation: Static electricity
+    </li>
+    <li onclick="openInFrame(this, 'assets/phet/CH4_charges-and-fields_en')">
+      Simulation: Charge and fields
+    </li>
+    <li onclick="openInFrame(this, 'assets/phet/CH4_capacitor-lab-basics_en.html')">
+      Simulation: Capacitor lab
+    </li>
+      </ul>
+
+<li class="section" onclick="toggleSubmenu(this, 'submenu5')">Chapter 5. Electric current
+</li>
+      <ul id="submenu5" class="submenu">
+		 <li onclick="openVideo(this, 'assets/en-video/CH5_Series connection.mp4')">Video: Series connection</li>     
+       <li onclick="openVideo(this, 'assets/en-video/CH5_Parallel connection.mp4')">Video: Parallel connection</li>
+       <li onclick="openVideo(this, 'assets/en-video/CH5_Short circuit.mp4')">Video: Short circuit</li>
+       	   <li onclick="openVideo(this, 'assets/en-video/CH5_Fuse.mp4')">Video: Fuse</li>
+       <li onclick="openInFrame(this, 'assets/phet/CH5_circuit-construction-kit-dc_en.html')">
+      Virtual Lab
+    </li>
+      </ul>
+
+ <li class="section" onclick="toggleSubmenu(this, 'submenu6')">Chapter 6. Electromagnetism
+</li>
+      <ul id="submenu6" class="submenu">
+    <li onclick="openInFrame(this, 'assets/phet/CH6_magnet-and-compass_en.html')">
+      Simulation: Magnet and Compass
+    </li>
+    <li onclick="openInFrame(this, 'assets/phet/CH6_magnets-and-electromagnets_en.html')">
+      Simulation: Magnets and Electromagnets
+    </li>
+    <li onclick="openInFrame(this, 'assets/phet/CH6_generator_en.html')">
+      Simulation: Generator
+    </li>
+      </ul>
+
+  <li class="section" onclick="toggleSubmenu(this, 'submenu7')">Chapter 7. Optics
+</li>
+      <ul id="submenu7" class="submenu">
+       <li onclick="openVideo(this, 'assets/en-video/CH7_Hyper.mp4')">Video: Hyperopia</li>
+       <li onclick="openVideo(this, 'assets/en-video/CH7_myopia.mp4')">Video: Myopia</li>
+    <li onclick="openInFrame(this, 'assets/phet/CH7_bending-light_en.html')">
+      Simulation: Bending light
+    </li>
+    <li onclick="openInFrame(this, 'assets/phet/CH7_geometric-optics_en.html')">
+      Simulation: Geometric optics
+    </li>
+      </ul>
+    </ul>
+  </div>
+
+  <!-- Контент аймағы -->
+  <div class="content" id="contentArea">
+    <iframe id="contentFrame"></iframe>
+  </div>
+
+  <script>
+    function toggleSubmenu(el, id) {
+      document.querySelectorAll(".menu li.section").forEach(li => li.classList.remove("active"));
+      document.querySelectorAll(".submenu").forEach(ul => ul.style.display = "none");
+
+      el.classList.add("active");
+      document.getElementById(id).style.display = "block";
+    }
+
+    function setActive(el) {
+      document.querySelectorAll(".submenu li").forEach(li => li.classList.remove("active"));
+      el.classList.add("active");
+      pauseVideoIfPlaying();
+    }
+
+    // iframe ішінде ашу (Тапсырма үшін)
+    function openInFrame(el, url) {
+      setActive(el);
+      document.getElementById("contentArea").innerHTML = `
+        <iframe id="contentFrame" src="${url}"></iframe>
+      `;
+    }
+
+    // Видео ашу
+    function openVideo(el, videoFile) {
+      setActive(el);
+      document.getElementById("contentArea").innerHTML = `
+        <div id="videoContainer">
+          <video id="lessonVideo" controls>
+            <source src="${videoFile}" type="video/mp4">
+            Сіздің браузер видео ойнатуды қолдамайды.
+          </video>
+        </div>`;
+    }
+
+    // Симуляция ашу + үстінде текст шығару
+    function openSimulation(el, url, description) {
+      setActive(el);
+      document.getElementById("contentArea").innerHTML = `
+        <div class="content-text">${description}</div>
+        <iframe id="contentFrame" src="${url}"></iframe>
+      `;
+    }
+
+    function pauseVideoIfPlaying() {
+      const video = document.getElementById("lessonVideo");
+      if (video && !video.paused) {
+        video.pause();
+      }
+    }
+  </script>
+</body>
+</html>
